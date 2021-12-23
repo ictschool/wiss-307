@@ -1,0 +1,17 @@
+{
+    "name": "enrico/example2",
+    "description": "Beispiel f\u0000r WISS",
+    "type": "project",
+    "license": "GNU Public v3",
+    "authors": [
+        {
+            "name": "Enrico Buchs",
+            "email": "enrico.buchs@bict.ch"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "phpmailer/phpmailer": "^6.5",
+        "dompdf/dompdf": "^1.1"
+    }
+}

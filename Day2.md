@@ -13,31 +13,31 @@ Nun soll von 08:00 bis 12:00 folgender Auftrag durch Sie realisiert werden:
 | 45' | Sorge dafür, dass dein ausgefülltes Formular via Mail an dich gesendet wird | |
 | Bonus | Um die Kontaktseite oder so spannender zu gestalten, möchte man eine Karte verwenden! Schau dir mal die https://leafletjs.com/ Library an. Um danach ein Layer verwenden zu können, ist OpenStreetmap als freier Anbieter optimal. Siehe weiter unten ein Code Example. Jedoch ist es für dich noch nicht erforderlich, dies mit PHP zu kombinieren. Gib die Karte mit dem Fokus auf deine Adresse aus.  | https://leafletjs.com/ <br> https://www.openstreetmap.org/ <br> | 
 
-<pre>
+## Code Beispiel PHP und Javascript
+```php
 <?php
-    if($map):
-        $coordinates = $map->coordinates;
-        if($coordinates):
-            $comment = $map->map_description;
-            $comment = str_replace("\n","",strip_tags(str_replace("</p>", "<br>", trim($comment)), '<br><a><strong><em>'));
-            $zoom = $map->zoom_factor;
-    ?>
+if($map):
+    $coordinates = $map->coordinates;
+    if($coordinates):
+        $comment = $map->map_description;
+        $comment = str_replace("\n","",strip_tags(str_replace("</p>", "<br>", trim($comment)), '<br><a><strong><em>'));
+        $zoom = $map->zoom_factor;
+?>
 
-    <div id="map" class="col-md map"></div>
-    <script>
-        <?php
-            echo "var place = [{$coordinates}];";
-        ?>
-        var map = L.map('map').setView(place, <?php echo $zoom ?>);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-        L.marker(place).addTo(map)
-            .bindPopup('<?php echo $comment ?>')
-            .openPopup();
-    </script>
+<div id="map" class="col-md map"></div>
+<script>
     <?php
-        endif;
-    endif;
+        echo "var place = [{$coordinates}];";
     ?>
-</pre>
+    var map = L.map('map').setView(place, <?php echo $zoom ?>);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    L.marker(place).addTo(map)
+        .bindPopup('<?php echo $comment ?>')
+        .openPopup();
+</script>
+<?php
+endif;
+?>
+```

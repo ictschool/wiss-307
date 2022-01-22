@@ -1,0 +1,11 @@
+:root{
+
+}
+
+.map {
+    height: 25vh;
+}
+
+.blue-color > .bi-star-fill::before{
+    color: blue !important;
+}

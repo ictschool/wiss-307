@@ -12,8 +12,8 @@
 2. [Nachmittag Prüfung/Inputs](./Day3.md)
 
 # Tag 4: 29.01.22
-1. Vormittag Homework
-2. Nachmittag Inputs
+1. [Vormittag Homework](./Day4.md) bis 11:15
+2. [Nachmittag Inputs](./Day4.md)
 
 # Tag 5: 05.02.22
 1. Vormittag Homework

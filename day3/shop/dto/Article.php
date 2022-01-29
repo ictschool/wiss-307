@@ -5,6 +5,7 @@ class Article{
     private $pdo;
     private $stm;
 
+
     public function __construct($pdo) {
         $this->pdo = $pdo;
     }
@@ -23,9 +24,18 @@ class Article{
         return $this;
     }
 
+    public function single(int $article_id):Article{
+        $stm = "select * from whisky where id = :id;";
+        $this->stm = $this->pdo->prepare($stm);
+        $this->stm->execute(['id'=>$article_id]);
+        return $this;
+    }
+
     public function fetch(){
         return $this->stm->fetchAll(\PDO::FETCH_CLASS);
     }
+
+
 
 
 }

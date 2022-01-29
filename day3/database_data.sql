@@ -1,3 +1,4 @@
+use whiskydb;
 INSERT INTO `whiskydb`.`country` (`country`) VALUES ('Schottland');
 INSERT INTO `whiskydb`.`country` (`country`) VALUES ('Irland');
 INSERT INTO `whiskydb`.`country` (`country`) VALUES ('USA');

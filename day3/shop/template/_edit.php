@@ -1,7 +1,7 @@
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-
+        <div class="row gx-12 gx-lg-12 row-cols-12 row-cols-md-12 row-cols-xl-12 justify-content-center">
+            <h1>Edit Product</h1>
             <form id="contactForm" action="<?=Path::url("answer") ?>" method="post">
                 <input type="hidden" name="action" value="<?=Path::url("answer") ?>">
                 <!-- Name input -->

@@ -15,7 +15,10 @@ class Cart {
 
     public function dropFromCart(int $article_id){
         //session['cart'=>[1=>["article"=>{}, "count"=>1]], 2=>[],...]
-        unset($_SESSION['cart'][$article_id]);
+        if($_SESSION['cart'][$article_id]['count'] == 1)
+            unset($_SESSION['cart'][$article_id]);
+        else
+            $_SESSION['cart'][$article_id]['count'] = $_SESSION['cart'][$article_id]['count']-1;
     }
 
     public function addToCart(int $article_id){

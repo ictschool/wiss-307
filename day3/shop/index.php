@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "vendor/autoload.php";
+include_once 'helper/Router.php';
 include_once 'helper/Path.php';
 include_once 'helper/Filter.php';
 include_once 'helper/MyPdo.php';
@@ -10,16 +11,7 @@ $pdo = new MyPDO('settings.ini');
 $articleDto = new Article($pdo);
 $cart = new Cart($articleDto);
 
-if (isset($_GET['clear']) && $_GET['clear'] == 'cart'){
-    if(isset($_GET['article_id']))
-        $cart->dropFromCart($_GET['article_id']);
-    else
-        $cart->clear();
-}else{
-    if(isset($_GET['article_id'])) {
-        $cart->addToCart($_GET['article_id']);
-    }
-}
+Router::cart($_GET, $cart);
 
 
 

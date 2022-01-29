@@ -18,6 +18,18 @@
                 </li>
                 <li class="nav-item"><a class="nav-link" href="<?=Path::url('contact') ?>">Contact</a></li>
             </ul>
+            <?php if(!Router::isLoggedIn()): ?>
+            <a class="btn btn-outline-dark" href="<?=Path::url('login')?>">
+                <i class="bi bi-box-arrow-in-right"></i>
+                Login
+            </a>
+            <?php else: ?>
+                <a class="btn btn-outline-dark" href="<?=Path::url('logout')?>">
+                    <i class="bi bi-box-arrow-out-right"></i>
+                    <?=$_SESSION['login']?>
+                    <span class="badge bg-dark text-white ms-1 rounded-pill">Logout</span>
+                </a>
+            <?php endif; ?>
             <form class="d-flex" action="<?=Path::url('cart') ?>">
                 <button class="btn btn-outline-dark" type="submit">
                     <i class="bi-cart-fill me-1"></i>

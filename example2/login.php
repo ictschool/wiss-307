@@ -19,7 +19,7 @@ if(isset($_POST['username'])){
 }
 if(isset($_SESSION['username'])) {
     echo "Hallo Benutzer: {$_SESSION['username']}";
-    echo "<a href='index.php?file=login.php&logout'>Logout</a>";
+    echo "<a href='index.php?file=_login.php&logout'>Logout</a>";
 }else{
 ?>
             <form action="index.php?file=login.php" method="post">

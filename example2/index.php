@@ -4,7 +4,7 @@ include_once 'MyPDO.php';
 
 session_start();
 
-$file = (isset($_GET['file']) && $_GET['file'] != "index.php")?$_GET['file']:'login.php';
+$file = (isset($_GET['file']) && $_GET['file'] != "index.php")?$_GET['file']:'_login.php';
 
 $title = strtoupper(explode(".", $file)[0]);
 

@@ -14,7 +14,7 @@
                     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 }).addTo(map);
                 L.marker(place).addTo(map)
-                    .bindPopup('WISS<br>Ostermundigenstrasse 81, 3006 Bern')
+                    .bindPopup('<?="WISS"?><br>Ostermundigenstrasse 81, 3006 Bern')
                     .openPopup();
             </script>
         </div>

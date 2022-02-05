@@ -1,5 +1,8 @@
 {
     "require": {
         "google/recaptcha": "^1.2"
+    },
+    "scripts": {
+        "post-install-cmd": "installdb.sh"
     }
 }

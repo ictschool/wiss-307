@@ -16,6 +16,7 @@
                         <li><a class="dropdown-item" href="<?=Path::url('articles?new') ?>">New Arrivals</a></li>
                     </ul>
                 </li>
+                <li class="nav-item"><a class="nav-link" href="<?=Path::url('edit') ?>">Edit</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?=Path::url('contact') ?>">Contact</a></li>
             </ul>
             <?php if(!Router::isLoggedIn()): ?>

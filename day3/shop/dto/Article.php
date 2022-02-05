@@ -25,6 +25,7 @@ class Article{
     }
 
     public function single(int $article_id):Article{
+        // erstelle die abfrage auf die datenbank mit dem filter auf id
         $stm = "select * from whisky where id = :id;";
         $this->stm = $this->pdo->prepare($stm);
         $this->stm->execute(['id'=>$article_id]);

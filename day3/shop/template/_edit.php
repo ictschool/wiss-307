@@ -2,41 +2,63 @@
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-12 gx-lg-12 row-cols-12 row-cols-md-12 row-cols-xl-12 justify-content-center">
             <h1>Edit Product</h1>
-            <form id="contactForm" action="<?=Path::url("answer") ?>" method="post">
-                <input type="hidden" name="action" value="<?=Path::url("answer") ?>">
-                <!-- Name input -->
-                <div class="mb-3">
-                    <label class="form-label" for="name">Name</label>
-                    <input class="form-control" id="name" type="text" name="name" pattern="^[A-Za-z]+[ ]{1}[A-Za-z]+$" required placeholder="Name" />
+
+            <?php
+            if(isset($_POST['id'])){
+                if(!preg_match('/^1[0-9]{3}2022$/', $_POST['id'])){
+                    echo <<<PIPFAX
+                    <div class="alert alert-danger" role="alert">
+                      Format for id {$_POST['id']} is wrong!
+                    </div>
+PIPFAX;
+                }else{
+                    echo <<<VELO
+                    <div class="alert alert-success" role="alert">
+                      id {$_POST['id']} is saved
+                    </div>
+VELO;
+                }
+                foreach ($_FILES['image']['tmp_name'] as $key => $path){
+                    //move_uploaded_file($path, __DIR__.'/../uploads/'.$_FILES['image']['name'][$key]);
+                }
+
+            }
+            ?>
+
+
+            <form id="editForm" action="<?=Path::url("edit") ?>" method="post"
+            enctype="multipart/form-data">
+
+                <div class="mb-3 input-group">
+                    <!--oninvalid="this.setCustomValidity('pattern must be 1___2022')"
+                           oninput="this.setCustomValidity('')"-->
+                    <span class="input-group-text" id="basic-addon2"><i class="bi bi-123"></i></span>
+                    <input class="form-control" id="id" type="text" name="id" pattern="^1[0-9]{3}2022$"
+                           placeholder="1___2022" />
                 </div>
 
-                <!-- Email address input -->
-                <div class="mb-3">
-                    <label class="form-label" for="emailAddress">Email Address</label>
-                    <input class="form-control" id="emailAddress" name="email" type="email" required placeholder="Email Address" />
+                <div class="mb-3 input-group">
+                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-circle"></i></span>
+                    <input class="form-control" id="name" type="text" name="name[]" placeholder="Name" />
+                </div>
+                <div class="mb-3 input-group">
+                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-circle"></i></span>
+                    <input class="form-control" id="name" type="text" name="name[]" placeholder="Name" />
                 </div>
 
-                <!-- Message input -->
-                <div class="mb-3">
-                    <label class="form-label" for="message">Message</label>
-                    <textarea class="form-control" id="message" name="message" required type="text" placeholder="Message" style="height: 10rem;"></textarea>
+                <div class="mb-3 input-group">
+                    <span class="input-group-text" id="basic-addon3"><i class="bi bi-file-arrow-up"></i></span>
+                    <input class="form-control" id="file" type="file" name="image[]" placeholder="File"
+                    accept="image/*" multiple/>
                 </div>
+
+
                 <!-- Form submit button -->
                 <div class="d-grid">
-                    <button class="g-recaptcha btn btn-primary btn-lg"
-                            data-sitekey="6Lf_U0QeAAAAAIv_Y-1wNF31uNn56yyl1pYY4sAX"
-                            data-callback='onSubmit'
-                            data-action='<?=Path::url("answer") ?>'>Submit</button>
+                    <button class="btn btn-primary btn-lg">Submit</button>
                 </div>
 
             </form>
-
-            <script src="https://www.google.com/recaptcha/api.js"></script>
-            <script>
-                function onSubmit(token) {
-                    document.getElementById("contactForm").submit();
-                }
-            </script>
 
         </div>
     </div>
